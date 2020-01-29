@@ -6,12 +6,12 @@ from config import config
 
 def run_socket(index, _config):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = (_config['host'], _config['port'])
+    server_address = (_config['test_host'], _config['port'])
     print(f'{index} connecting to %s port %s' % server_address)
     sock.connect(server_address)
     try:
-        for i in range(0, 10 * random.randint(1, 5)):
-            message = '1234567\n'.encode()
+        for i in range(0, 1 * random.randint(1, 1)):
+            message = '123\n'.encode()
             print(f'{index} sending "%s"' % message)
             sock.sendall(message)
             response = bytearray()
@@ -29,5 +29,5 @@ def run_socket(index, _config):
         sock.close()
 
 
-for k in range(0, 10):
+for k in range(0, 1):
     threading.Thread(target=run_socket, args=(k, config,)).start()

@@ -14,9 +14,8 @@ class SocketHandler(Thread):
                     print(f'[{self.client.ip}:{self.client.port}] disconnected')
                     break
                 else:
-                    print(f'[{self.client.ip}:{self.client.port}] send: %s' % request)
+                    print(f'[{self.client.ip}:{self.client.port}] get: %s' % request.decode().strip())
                     response = b"Response: "
-                    response += request.rstrip()
                     response += request
                     self.client.socket.sendall(response)
         except ConnectionResetError:
