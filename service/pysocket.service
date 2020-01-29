@@ -1,0 +1,16 @@
+[Unit]
+Description=Socket server on Python3
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=vm
+WorkingDirectory=/home/vm/Projects/py-socket
+ExecStart=/usr/bin/python3 /home/vm/Projects/py-socket/server.py
+RestartSec=10
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target
+
