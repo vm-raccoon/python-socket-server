@@ -1,13 +1,11 @@
 import socket
-import sys
 import threading
-import random
 from config import config
 
 
-def run_socket(index, config):
+def run_socket(index, _config):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = (config['server'], config['port'])
+    server_address = (_config['server'], _config['port'])
     print(f'{index} connecting to %s port %s' % server_address)
     sock.connect(server_address)
     try:
@@ -17,6 +15,7 @@ def run_socket(index, config):
             sock.sendall(message)
             amount_received = 0
             amount_expected = len(message)
+            data = None
             while amount_received < amount_expected:
                 data = sock.recv(8)
                 amount_received += len(data)
