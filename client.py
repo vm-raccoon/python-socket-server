@@ -6,7 +6,7 @@ from config import config
 
 def run_socket(index, _config):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = (_config['test_host'], _config['port'])
+    server_address = (_config['host'], _config['port'])
     print(f'{index} connecting to %s port %s' % server_address)
     sock.connect(server_address)
     try:
